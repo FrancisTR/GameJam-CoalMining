@@ -6,6 +6,7 @@ var maxHP = 10
 @onready var coal = $"."
 
 var miningaway = false
+var coalAmount = 0
 
 var localPlayer : Node2D = null
 
@@ -25,6 +26,8 @@ func mine():
 	if miningaway && localPlayer != null:
 		if maxHP > 0:
 			maxHP -= localPlayer.miningStrength
+			coalAmount += 1
+			$"../../MainPlayer/Camera2D/Time/CoalAmount".text = str(coalAmount)
 		if maxHP <= 0:
 			queue_free()
 
